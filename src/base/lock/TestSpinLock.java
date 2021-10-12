@@ -41,10 +41,9 @@ public class TestSpinLock {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                }finally {
+                    mySpinLock.unlock(Thread.currentThread());
                 }
-
-                mySpinLock.unlock(Thread.currentThread());
-
             }).start();
 
         }
