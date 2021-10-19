@@ -15,7 +15,7 @@ public class TestThreadTwo {
             while (count < 100) {
                 count2++; //5000+
                 synchronized (count) {
-                    count3++; //count3 = count2
+//                    count3++; //count3 = count2
                     if (count % 2 == 1) {
                         System.out.println("当前线程"+Thread.currentThread().getName()+"---: "+count);
                         count++;
@@ -44,6 +44,6 @@ public class TestThreadTwo {
             e.printStackTrace();
         }
         System.out.println(count2);
-        System.out.println(count3);
+//        System.out.println(count3);
     }
 }

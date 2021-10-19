@@ -9,12 +9,14 @@ import java.util.concurrent.locks.ReentrantLock;
 public class TestThreadThree {
 
     private static Integer count = 1;
+    private static Integer count2 = 1;
 
     private static ReentrantLock lock = new ReentrantLock();
 
     public static void main(String[] args) {
         new Thread(()->{
             while (count < 100) {
+                count2++;
                 lock.lock();
                 if (count % 2 == 1) {
                     System.out.println("当前线程"+Thread.currentThread().getName()+"---: "+count);
@@ -36,5 +38,13 @@ public class TestThreadThree {
                 lock.unlock();
             }
         },"偶数线程").start();
+
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(count2);
     }
 }
